@@ -23,9 +23,9 @@ MyTheme.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });
+
   app.set('views', __dirname + '/server/views');
   MyTheme.aggregateAsset('css', 'myTheme.css');
-
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

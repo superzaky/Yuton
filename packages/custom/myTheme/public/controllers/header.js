@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.myTheme').controller('HeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
+angular.module('mean.myTheme').controller('MyHeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
   function($scope, $rootScope, Menus, MeanUser, $state) {
     
     var vm = this;
