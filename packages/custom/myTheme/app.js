@@ -26,6 +26,7 @@ MyTheme.register(function(app, auth, database, system) {
 
   app.set('views', __dirname + '/server/views');
   MyTheme.aggregateAsset('css', 'myTheme.css');
+  
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
