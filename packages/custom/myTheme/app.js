@@ -20,7 +20,28 @@ MyTheme.register(function(app, auth, database, system) {
   MyTheme.menus.add({
     title: 'myTheme example page',
     link: 'myTheme example page',
-    roles: ['authenticated'],
+    roles: ['authenticated', 'anonymous'],
+    menu: 'main'
+  });  
+
+  MyTheme.menus.add({
+    title: 'Link 1',
+    link: 'Link 1',
+    roles: ['authenticated', 'anonymous'],
+    menu: 'main'
+  });  
+
+  MyTheme.menus.add({
+    title: 'Link 2',
+    link: 'Link 2',
+    roles: ['authenticated', 'anonymous'],
+    menu: 'main'
+  });  
+
+  MyTheme.menus.add({
+    title: 'Link 3',
+    link: 'Link 3',
+    roles: ['authenticated', 'anonymous'],
     menu: 'main'
   });
 

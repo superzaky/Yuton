@@ -1,6 +1,5 @@
 'use strict';
-
-angular.module('mean.myTheme').controller('HeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
+angular.module('mean.system').controller('MyHeaderController ', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
   function($scope, $rootScope, Menus, MeanUser, $state) {
     
     var vm = this;
@@ -28,14 +27,14 @@ angular.module('mean.myTheme').controller('HeaderController', ['$scope', '$rootS
 
     // Query server for menus and check permissions
     queryMenu('main', defaultMainMenu);
+    queryMenu('admin', defaultMainMenu);
     queryMenu('account', []);
-
 
     $scope.isCollapsed = false;
 
     $rootScope.$on('loggedin', function() {
       queryMenu('main', defaultMainMenu);
-
+      queryMenu('admin', defaultMainMenu);
       vm.hdrvars = {
         authenticated: MeanUser.loggedin,
         user: MeanUser.user,
@@ -54,6 +53,7 @@ angular.module('mean.myTheme').controller('HeaderController', ['$scope', '$rootS
         isAdmin: false
       };
       queryMenu('main', defaultMainMenu);
+      queryMenu('admin', defaultMainMenu);
       $state.go('home');
     });
 
