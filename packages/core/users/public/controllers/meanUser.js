@@ -51,7 +51,6 @@ angular.module('mean.users')
   .controller('RegisterCtrl', ['$rootScope', 'MeanUser',
     function($rootScope, MeanUser) {
       var vm = this;
-
       vm.user = {};
       
       vm.registerForm = MeanUser.registerForm = true;
