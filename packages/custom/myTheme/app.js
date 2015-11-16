@@ -44,7 +44,7 @@ MyTheme.register(function(app, auth, database, system) {
     roles: ['authenticated', 'anonymous'],
     menu: 'main'
   });
-
+  MyTheme.angularDependencies(['mean.system']);
   app.set('views', __dirname + '/server/views');
   MyTheme.aggregateAsset('css', 'myTheme.css');
   

@@ -1,5 +1,6 @@
 'use strict';
-angular.module('mean.system').controller('MyHeaderController ', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
+
+angular.module('mean.myTheme').controller('MyHeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
   function($scope, $rootScope, Menus, MeanUser, $state) {
     
     var vm = this;
@@ -53,7 +54,6 @@ angular.module('mean.system').controller('MyHeaderController ', ['$scope', '$roo
         isAdmin: false
       };
       queryMenu('main', defaultMainMenu);
-      queryMenu('admin', defaultMainMenu);
       $state.go('home');
     });
 
