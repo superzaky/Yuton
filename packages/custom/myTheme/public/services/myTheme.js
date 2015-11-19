@@ -1,48 +1,32 @@
 'use strict';
 
-angular.module('mean.myTheme').factory('MyTheme', [
-  function() {
+var myApp = angular.module('mean.myTheme');
 
-    function MeanUserKlass(){
-      this.name = 'users';
-      this.user = {};
-      this.registerForm = false;
-      this.loggedin = false;
-      this.isAdmin = false;
-      this.loginError = 0;
-      this.usernameError = null;
-      this.registerError = null;
-      this.resetpassworderror = null;
-      this.validationError = null;
-      self = this;
-      $http.get('/api/users/me').success(function(response) {
-        if(!response && $cookies.get('token') && $cookies.get('redirect')) {
-          self.onIdentity.bind(self)({
-            token: $cookies.get('token'), 
-            redirect: $cookies.get('redirect').replace(/^"|"$/g, '')
-          });
-          $cookies.remove('token');
-          $cookies.remove('redirect');
-        } else {
-          self.onIdentity.bind(self)(response);
-        }
-      });
-    }
-
-    MeanUserKlass.prototype.register = function(user) {
-      $http.post('/api/register', {
-        email: user.email,
-        password: user.password,
-        confirmPassword: user.confirmPassword,
-        username: user.username,
-        name: user.name
-      })
-        .success(this.onIdentity.bind(this))
-        .error(this.onIdFail.bind(this));
-    };
-
+//factory style, more involved but more sophisticated
+myApp.factory('MyTheme', function($http, $location) {
     return {
-      name: 'myTheme'
+        register: function(user) {
+            return $http.post('/api/myTheme/register', { 
+                email: user.email,
+                password: user.password,
+                confirmPassword: user.confirmPassword,
+                username: user.username,
+                name: user.name
+            }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+                $http.post('/api/login', {
+                    email: user.email,
+                    password: user.password
+                }).then(function (response) {
+                    $location.path( "/" );
+                }); 
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+
+            });
+        }
     };
-  }
-]);
+});

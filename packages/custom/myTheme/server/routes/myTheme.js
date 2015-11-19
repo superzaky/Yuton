@@ -6,11 +6,10 @@ var config = require('meanio').loadConfig();
 module.exports = function(MyTheme, app, auth, database) {
 	// User routes use users controller
 	var users = require('../controllers/users')(MyTheme);
-	
 	if(config.strategies.local.enabled)
 	{
 		// Setting up the users api
-		app.route('/api/register')
+		app.route('/api/myTheme/register')
 			.post(users.create);
 	}
 };

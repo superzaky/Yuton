@@ -4,7 +4,6 @@ angular.module('mean.myTheme')
   .controller('MyRegisterCtrl', ['$rootScope', 'MyTheme',
     function($rootScope, MyTheme) {
       var vm = this;
-      console.log("reg.js");
       vm.user = {};
       
       vm.registerForm = MyTheme.registerForm = true;
